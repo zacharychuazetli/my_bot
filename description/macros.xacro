@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
   <xacro:macro name="leo" 
-               params="default_antenna:=true
+               params="default_antenna:=false
                        rockers_fixed:=true
                        footprint_link:=true
                        link_prefix:=''
@@ -21,12 +21,12 @@
         </inertial>
         <visual>
           <geometry>
-            <mesh filename="package://my_bot/models/Rocker.dae"/>
+            <mesh filename="file://$(find my_bot)/models/Rocker.dae"/>
           </geometry>
         </visual>
         <collision>
           <geometry>
-            <mesh filename="package://my_bot/models/Rocker_outline.stl"/>
+            <mesh filename="file://$(find my_bot)/models/Rocker_outline.stl"/>
           </geometry>
         </collision>
       </link>
@@ -44,7 +44,7 @@
         </inertial>
         <visual>
           <geometry>
-            <mesh filename="package://my_bot/models/Wheel${model}.dae"/>
+            <mesh filename="file://$(find my_bot)/models/Wheel${model}.dae"/>
           </geometry>
         </visual>
         <collision>
@@ -61,7 +61,7 @@
         </collision>
         <collision>
           <geometry>
-            <mesh filename="package://my_bot/models/Wheel_outline.stl"/>
+            <mesh filename="file://$(find my_bot)/models/Wheel_outline.stl"/>
           </geometry>
         </collision>
       </link>
@@ -83,12 +83,12 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="package://my_bot/models/Chassis.dae"/>
+          <mesh filename="file://$(find my_bot)/models/Chassis.dae"/>
         </geometry>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://my_bot/models/Chassis_outline.stl"/>
+          <mesh filename="file://$(find my_bot)/models/Chassis_outline.stl"/>
         </geometry>
       </collision>
     </link>
@@ -112,7 +112,7 @@
         </inertial>
         <visual>
           <geometry>
-            <mesh filename="package://my_bot/models/Antenna.dae"/>
+            <mesh filename="file://$(find my_bot)/models/Antenna.dae"/>
           </geometry>
         </visual>
         <collision>
@@ -124,9 +124,9 @@
       </link>
     </xacro:if>
 
-    <link name="${link_prefix}camera_frame"/>
+    <!-- <link name="${link_prefix}camera_frame"/>
     <link name="${link_prefix}camera_optical_frame"/>
-    <link name="${link_prefix}imu_frame"/>
+    <link name="${link_prefix}imu_frame"/> -->
 
     <!-- JOINTS -->
 
@@ -208,7 +208,7 @@
       </joint>
     </xacro:if>
 
-    <joint name="${joint_prefix}camera_joint" type="fixed">
+    <!-- <joint name="${joint_prefix}camera_joint" type="fixed">
       <origin xyz="0.0971 0 -0.0427" rpy="0 0.2094 0"/>
       <parent link="${link_prefix}base_link"/>
       <child link="${link_prefix}camera_frame"/>
@@ -224,254 +224,10 @@
       <origin xyz="${imu_translation}" rpy="0 0 0"/>
       <parent link="${link_prefix}base_link"/>
       <child link="${link_prefix}imu_frame"/>
-    </joint>
+    </joint> -->
 
   </xacro:macro>
 
-  <!-- LEO GAZEBO -->
 
-  <xacro:macro name="leo_gazebo"
-               params="robot_ns:=''">
-
-    <xacro:property name="link_prefix" value=""/>
-    <xacro:if value="${robot_ns != '' and robot_ns != '/'}">
-      <xacro:property name="link_prefix" value="${robot_ns}/"/>
-    </xacro:if>
-
-    <!-- base ODE properties -->
-    <gazebo reference="${link_prefix}base_footprint">
-      <kp>1e6</kp>
-      <kd>1.0</kd>
-      <mu1>0.3</mu1>
-      <mu2>0.3</mu2>
-      <minDepth>0.003</minDepth>
-    </gazebo>
-
-    <gazebo reference="${link_prefix}base_link">
-      <kp>1e6</kp>
-      <kd>1.0</kd>
-      <mu1>0.3</mu1>
-      <mu2>0.3</mu2>
-      <minDepth>0.003</minDepth>
-    </gazebo>
-
-    <!-- rocker ODE properties -->
-    <gazebo reference="${link_prefix}rocker_L_link">
-      <kp>1e6</kp>
-      <kd>1.0</kd>
-      <mu1>0.3</mu1>
-      <mu2>0.3</mu2>
-      <minDepth>0.003</minDepth>
-    </gazebo>
-
-    <gazebo reference="${link_prefix}rocker_R_link">
-      <kp>1e6</kp>
-      <kd>1.0</kd>
-      <mu1>0.3</mu1>
-      <mu2>0.3</mu2>
-      <minDepth>0.003</minDepth>
-    </gazebo>
-    <!-- wheel ODE properties -->
-    <gazebo reference="${link_prefix}wheel_FL_link">
-      <kp>1e6</kp>
-      <kd>100.0</kd>
-      <mu1>3.0</mu1>
-      <mu2>1.0</mu2>
-      <fdir1>1 0 0</fdir1>
-      <minDepth>0.003</minDepth>
-    </gazebo>
-
-    <gazebo reference="${link_prefix}wheel_FR_link">
-      <kp>1e6</kp>
-      <kd>100.0</kd>
-      <mu1>3.0</mu1>
-      <mu2>1.0</mu2>
-      <fdir1>1 0 0</fdir1>
-      <minDepth>0.003</minDepth>
-    </gazebo>
-
-    <gazebo reference="${link_prefix}wheel_RL_link">
-      <kp>1e6</kp>
-      <kd>100.0</kd>
-      <mu1>3.0</mu1>
-      <mu2>1.0</mu2>
-      <fdir1>1 0 0</fdir1>
-      <minDepth>0.003</minDepth>
-    </gazebo>
-
-    <gazebo reference="${link_prefix}wheel_RR_link">
-      <kp>1e6</kp>
-      <kd>100.0</kd>
-      <mu1>3.0</mu1>
-      <mu2>1.0</mu2>
-      <fdir1>1 0 0</fdir1>
-      <minDepth>0.003</minDepth>
-    </gazebo>
-
-    <!-- camera -->
-    <gazebo reference="${link_prefix}camera_frame">
-      <sensor type="camera" name="leo_camera">
-        <always_on>true</always_on>
-        <update_rate>30.0</update_rate>
-        <visualize>false</visualize> 
-        <camera name="leo_camera">
-          <horizontal_fov>1.9</horizontal_fov>
-          <image>
-            <width>640</width>
-            <height>480</height>
-            <format>R8G8B8</format>
-          </image>
-          <clip>
-            <near>0.02</near>
-            <far>300</far>
-          </clip>
-          <noise>
-            <type>gaussian</type>
-            <mean>0.0</mean>
-            <stddev>0.007</stddev>
-          </noise>
-          <distortion>
-            <k1>-0.279817</k1>
-            <k2>0.060321</k2>
-            <k3>0.000487</k3>
-            <p1>0.000310</p1>
-            <p2>0.000000</p2>
-            <center>0.5 0.5</center>
-          </distortion>
-        </camera>
-        <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
-          <robotNamespace>${robot_ns}</robotNamespace>
-          <cameraName>camera</cameraName>
-          <imageTopicName>image_raw</imageTopicName>
-          <cameraInfoTopicName>camera_info</cameraInfoTopicName>
-          <frameName>camera_optical_frame</frameName>
-          <distortionK1>-0.279817</distortionK1>
-          <distortionK2>0.060321</distortionK2>
-          <distortionK3>0.000487</distortionK3>
-          <distortionT1>0.000310</distortionT1>
-          <distortionT2>0.000000</distortionT2>
-        </plugin>
-      </sensor>
-    </gazebo>
-
-    <!-- rocker differential -->
-    <gazebo>
-      <plugin name="rocker_differential" filename="libleo_gazebo_differential_plugin.so">
-        <jointA>rocker_L_joint</jointA>
-        <jointB>rocker_R_joint</jointB>
-        <forceConstant>100.0</forceConstant>
-      </plugin>
-    </gazebo>
-
-    <gazebo reference="${link_prefix}imu_frame">
-      <sensor type="imu" name="leo_imu_sensor">
-        <update_rate>100</update_rate>
-        <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
-          <robotNamespace>${robot_ns}</robotNamespace>
-          <topicName>imu/data_raw</topicName>
-          <frameName>${link_prefix}imu_frame</frameName>
-          <updateRateHZ>100.0</updateRateHZ>
-          <gaussianNoise>0.01</gaussianNoise>
-          <initialOrientationAsReference>false</initialOrientationAsReference>
-        </plugin>
-      </sensor>
-    </gazebo>
-
-    <!-- ros_control plugin -->
-    <gazebo>
-      <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-        <robotNamespace>${robot_ns}</robotNamespace>
-        <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
-      </plugin>
-    </gazebo>
-
-    <transmission name="wheel_FL_trans">
-      <type>transmission_interface/SimpleTransmission</type>
-      <joint name="wheel_FL_joint">
-        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-      </joint>
-      <actuator name="wheel_FL_motor">
-        <mechanicalReduction>1</mechanicalReduction>
-        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-      </actuator>
-    </transmission>
-
-    <transmission name="wheel_RL_trans">
-      <type>transmission_interface/SimpleTransmission</type>
-      <joint name="wheel_RL_joint">
-        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-      </joint>
-      <actuator name="wheel_RL_motor">
-        <mechanicalReduction>1</mechanicalReduction>
-        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-      </actuator>
-    </transmission>
-
-    <transmission name="wheel_FR_trans">
-      <type>transmission_interface/SimpleTransmission</type>
-      <joint name="wheel_FR_joint">
-        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-      </joint>
-      <actuator name="wheel_FR_motor">
-        <mechanicalReduction>1</mechanicalReduction>
-        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-      </actuator>
-    </transmission>
-
-    <transmission name="wheel_RR_trans">
-      <type>transmission_interface/SimpleTransmission</type>
-      <joint name="wheel_RR_joint">
-        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-      </joint>
-      <actuator name="wheel_RR_motor">
-        <mechanicalReduction>1</mechanicalReduction>
-        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-      </actuator>
-    </transmission>
-
-    <transmission name="rocker_L_trans">
-      <type>transmission_interface/SimpleTransmission</type>
-      <joint name="rocker_L_joint">
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      </joint>
-      <actuator name="rocker_L_virtual_motor"/>
-    </transmission>
-
-    <transmission name="rocker_R_trans">
-      <type>transmission_interface/SimpleTransmission</type>
-      <joint name="rocker_R_joint">
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      </joint>
-      <actuator name="rocker_R_virtual_motor"/>
-    </transmission>
-
-  </xacro:macro>
-
-  <xacro:macro name="leo_sim" 
-               params="default_antenna:=true 
-                       fixed:=false
-                       robot_ns:=''">
-
-    <xacro:property name="link_prefix" value=""/>
-    <xacro:if value="${robot_ns != '' and robot_ns != '/'}">
-      <xacro:property name="link_prefix" value="${robot_ns}/"/>
-    </xacro:if>
-
-    <xacro:leo default_antenna="${default_antenna}"
-               rockers_fixed="false"
-               link_prefix="${link_prefix}"/>
-
-    <xacro:leo_gazebo robot_ns="${robot_ns}"/>
-
-    <xacro:if value="${fixed}">
-      <link name="world"/>
-      <joint name="fixed" type="fixed">
-        <parent link="world"/>
-        <child link="${link_prefix}base_footprint"/>
-        <origin xyz="0.0 0.0 0"/>
-      </joint>
-    </xacro:if>
-  
-  </xacro:macro>
 
 </robot>
