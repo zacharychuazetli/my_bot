@@ -1,6 +1,9 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
+  <!-- zach, changed all filename to file://$(find my_bot)-->
+  <xacro:include filename="inertial_macros.xacro"/>
+  <!-- zach -->
   <xacro:macro name="leo" 
                params="default_antenna:=false
                        rockers_fixed:=true
@@ -66,6 +69,16 @@
         </collision>
       </link>
     </xacro:macro>
+
+    <!-- zach -->
+    <material name="red">
+          <color rgba="1 0 0 1"/>
+    </material>
+
+    <material name="blue">
+          <color rgba="0 0 1 1"/>
+    </material>
+    <!-- zach -->
 
     <!-- LINKS -->
     <xacro:if value="${footprint_link}">

@@ -18,6 +18,7 @@
             <wheel_separation>0.22381</wheel_separation>
             <wheel_separation>0.22381</wheel_separation>
             
+            <!-- dont know if its 0.057 or 0.0625 radius here took 0.057 -->
             <wheel_diameter>0.114</wheel_diameter>
             <wheel_diameter>0.114</wheel_diameter>
 
