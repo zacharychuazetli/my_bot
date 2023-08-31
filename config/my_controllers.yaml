@@ -1,7 +1,7 @@
 controller_manager:
   ros__parameters:
     update_rate: 30
-    use_sim_time: true
+    # use_sim_time: true
 
     diff_cont:
       type: diff_drive_controller/DiffDriveController
@@ -16,8 +16,11 @@ diff_cont:
 
     base_frame_id: base_footprint
 
-    left_wheel_names: ['wheel_FL_joint','wheel_RL_joint']
-    right_wheel_names: ['wheel_FR_joint','wheel_RR_joint']
+    # left_wheel_names: ['wheel_FL_joint','wheel_RL_joint']
+    # right_wheel_names: ['wheel_FR_joint','wheel_RR_joint']
+    left_wheel_names: ['wheel_FL_joint']
+    right_wheel_names: ['wheel_FR_joint']
+
 
     # <!-- wheel separation according to urdf 0.08214+0.14167=0.22381-->
     wheel_separation: 0.22381
@@ -29,8 +32,10 @@ diff_cont:
 
     # open_loop: false    
 
-    wheels_per_side: 2
-    wheel_separation_multiplier: 5.0
+    # -------------wheels_per_side: 2
+    # -------------wheel_separation_multiplier: 5.0
+
+
     # left_wheel_radius_multiplier: x
     # right_wheel_radius_multiplier: x
 
