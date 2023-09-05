@@ -12,6 +12,7 @@ Panels:
         - /Camera1
         - /LaserScan1
         - /LaserScan1/Topic1
+        - /Map1
       Splitter Ratio: 0.5441176295280457
     Tree Height: 371
   - Class: rviz_common/Selection
@@ -63,6 +64,8 @@ Visualization Manager:
           Value: true
         laser_frame:
           Value: true
+        map:
+          Value: true
         odom:
           Value: true
         rocker_L_link:
@@ -77,30 +80,33 @@ Visualization Manager:
           Value: true
         wheel_RR_link:
           Value: true
-      Marker Scale: 0.20000000298023224
+      Marker Scale: 1
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: true
       Tree:
-        odom:
-          base_footprint:
-            base_link:
-              camera_link:
-                camera_link_optical:
+        map:
+          odom:
+            base_footprint:
+              base_link:
+                camera_link:
+                  camera_link_optical:
+                    {}
+                laser_frame:
                   {}
-              laser_frame:
+                rocker_L_link:
+                  {}
+                rocker_R_link:
+                  {}
+              wheel_FL_link:
                 {}
-              rocker_L_link:
-                wheel_FL_link:
-                  {}
-                wheel_RL_link:
-                  {}
-              rocker_R_link:
-                wheel_FR_link:
-                  {}
-                wheel_RR_link:
-                  {}
+              wheel_FR_link:
+                {}
+              wheel_RL_link:
+                {}
+              wheel_RR_link:
+                {}
       Update Interval: 0
       Value: true
     - Alpha: 0.800000011920929
@@ -209,6 +215,7 @@ Visualization Manager:
         Grid: true
         Image: true
         LaserScan: true
+        Map: true
         RobotModel: true
         TF: true
         Value: true
@@ -245,6 +252,26 @@ Visualization Manager:
         Value: /scan
       Use Fixed Frame: true
       Use rainbow: true
+      Value: true
+    - Alpha: 0.699999988079071
+      Class: rviz_default_plugins/Map
+      Color Scheme: map
+      Draw Behind: false
+      Enabled: true
+      Name: Map
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /map
+      Update Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /map_updates
+      Use Timestamp: false
       Value: true
   Enabled: true
   Global Options:
@@ -288,26 +315,21 @@ Visualization Manager:
   Value: true
   Views:
     Current:
-      Class: rviz_default_plugins/Orbit
-      Distance: 5.7381696701049805
+      Angle: -1.5299996137619019
+      Class: rviz_default_plugins/TopDownOrtho
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
-      Focal Point:
-        X: -0.08020425587892532
-        Y: -0.08618282526731491
-        Z: 0.14889048039913177
-      Focal Shape Fixed Size: true
-      Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.1197967529296875
+      Scale: 86.12762451171875
       Target Frame: <Fixed Frame>
-      Value: Orbit (rviz)
-      Yaw: 2.8054006099700928
+      Value: TopDownOrtho (rviz_default_plugins)
+      X: -0.08020425587892532
+      Y: -0.08618282526731491
     Saved: ~
 Window Geometry:
   Camera:
