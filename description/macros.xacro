@@ -50,17 +50,43 @@
             <mesh filename="file://$(find my_bot)/models/Wheel${model}.dae"/>
           </geometry>
         </visual>
-        <collision>
+        <!-- <collision>
           <origin xyz="0 0.04485 0" rpy="${pi/2} 0 0"/>
           <geometry>
             <cylinder radius="0.057" length="0.07"/>
           </geometry>
-        </collision>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100000.0</mu>
+                <mu2>100000.0</mu2>
+              </ode>
+            </friction>
+            <contact>
+              <ode>
+                <min_depth>0.003</min_depth>
+              </ode>
+            </contact>
+          </surface>
+        </collision> -->
         <collision>
           <origin xyz="0 0.04485 0" rpy="${pi/2} 0 0"/>
           <geometry>
             <cylinder radius="0.0625" length="0.04"/>
           </geometry>
+          <!-- <surface>
+            <friction>
+              <ode>
+                <mu>100.0</mu>
+                <mu2>100.0</mu2>
+              </ode>
+            </friction>
+            <contact>
+              <ode>
+                <min_depth>0.1</min_depth>
+              </ode>
+            </contact>
+          </surface> -->
         </collision>
         <collision>
           <geometry>
@@ -182,8 +208,8 @@
       <parent link="${link_prefix}rocker_L_link"/>
       <child link="${link_prefix}wheel_FL_link"/>
       <axis xyz="0 -1 0"/>
-      <limit effort="2.0" velocity="6.0"/>
-      <dynamics friction="0.3125" damping="0.1"/>
+      <!-- <limit effort="2.0" velocity="6.0"/>
+      <dynamics friction="0.3125" damping="0.1"/> -->
     </joint>
 
     <joint name="${joint_prefix}wheel_RL_joint" type="continuous">
@@ -191,8 +217,8 @@
       <parent link="${link_prefix}rocker_L_link"/>
       <child link="${link_prefix}wheel_RL_link"/>
       <axis xyz="0 -1 0"/>
-      <limit effort="2.0" velocity="6.0"/>
-      <dynamics friction="0.3125" damping="0.1"/>
+      <!-- <limit effort="2.0" velocity="6.0"/>
+      <dynamics friction="0.3125" damping="0.1"/> -->
     </joint>
 
     <joint name="${joint_prefix}wheel_FR_joint" type="continuous">
@@ -200,8 +226,8 @@
       <parent link="${link_prefix}rocker_R_link"/>
       <child link="${link_prefix}wheel_FR_link"/>
       <axis xyz="0 1 0"/>
-      <limit effort="2.0" velocity="6.0"/>
-      <dynamics friction="0.3125" damping="0.1"/>
+      <!-- <limit effort="2.0" velocity="6.0"/>
+      <dynamics friction="0.3125" damping="0.1"/> -->
     </joint>
 
     <joint name="${joint_prefix}wheel_RR_joint" type="continuous">
@@ -209,8 +235,8 @@
       <parent link="${link_prefix}rocker_R_link"/>
       <child link="${link_prefix}wheel_RR_link"/>
       <axis xyz="0 1 0"/>
-      <limit effort="2.0" velocity="6.0"/>
-      <dynamics friction="0.3125" damping="0.1"/> 
+      <!-- <limit effort="2.0" velocity="6.0"/>
+      <dynamics friction="0.3125" damping="0.1"/>  -->
     </joint>
 
     <xacro:if value="${default_antenna}">
