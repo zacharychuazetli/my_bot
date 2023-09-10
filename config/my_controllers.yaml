@@ -1,6 +1,7 @@
 controller_manager:
   ros__parameters:
-    update_rate: 30
+  # change from 30 to 100
+    update_rate: 100
     # use_sim_time: true
 
     diff_cont:
@@ -21,7 +22,8 @@ diff_cont:
 
     # <!-- wheel separation according to urdf 0.08214+0.14167=0.22381-->
     # measure using ruler center of wheel to center of wheel 0.358
-    wheel_separation: 0.358
+    # take from leorover github = 0.33
+    wheel_separation: 0.33
 
     #  <!-- dont know if its 0.057 or 0.0625 radius here took 0.057 -->
     # using ruler it matches 0.0625

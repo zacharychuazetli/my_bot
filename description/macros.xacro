@@ -25,11 +25,13 @@
         <visual>
           <geometry>
             <mesh filename="file://$(find my_bot)/models/Rocker.dae"/>
+            <mesh filename="package://my_bot/models/Rocker.dae"/>
           </geometry>
         </visual>
         <collision>
           <geometry>
             <mesh filename="file://$(find my_bot)/models/Rocker_outline.stl"/>
+            <mesh filename="package://my_bot/models/Rocker_outline.stl"/>
           </geometry>
         </collision>
       </link>
@@ -48,49 +50,19 @@
         <visual>
           <geometry>
             <mesh filename="file://$(find my_bot)/models/Wheel${model}.dae"/>
+            <mesh filename="package://my_bot/models/Wheel${model}.dae"/>
           </geometry>
         </visual>
-        <!-- <collision>
-          <origin xyz="0 0.04485 0" rpy="${pi/2} 0 0"/>
-          <geometry>
-            <cylinder radius="0.057" length="0.07"/>
-          </geometry>
-          <surface>
-            <friction>
-              <ode>
-                <mu>100000.0</mu>
-                <mu2>100000.0</mu2>
-              </ode>
-            </friction>
-            <contact>
-              <ode>
-                <min_depth>0.003</min_depth>
-              </ode>
-            </contact>
-          </surface>
-        </collision> -->
         <collision>
           <origin xyz="0 0.04485 0" rpy="${pi/2} 0 0"/>
           <geometry>
             <cylinder radius="0.0625" length="0.04"/>
           </geometry>
-          <!-- <surface>
-            <friction>
-              <ode>
-                <mu>100.0</mu>
-                <mu2>100.0</mu2>
-              </ode>
-            </friction>
-            <contact>
-              <ode>
-                <min_depth>0.1</min_depth>
-              </ode>
-            </contact>
-          </surface> -->
         </collision>
         <collision>
           <geometry>
             <mesh filename="file://$(find my_bot)/models/Wheel_outline.stl"/>
+            <mesh filename="package://my_bot/models/Wheel_outline.stl"/>
           </geometry>
         </collision>
       </link>
@@ -123,11 +95,13 @@
       <visual>
         <geometry>
           <mesh filename="file://$(find my_bot)/models/Chassis.dae"/>
+          <mesh filename="package://my_bot/models/Chassis.dae"/>
         </geometry>
       </visual>
       <collision>
         <geometry>
           <mesh filename="file://$(find my_bot)/models/Chassis_outline.stl"/>
+          <mesh filename="package://my_bot/models/Chassis_outline.stl"/>
         </geometry>
       </collision>
     </link>
@@ -152,6 +126,7 @@
         <visual>
           <geometry>
             <mesh filename="file://$(find my_bot)/models/Antenna.dae"/>
+            <mesh filename="package://my_bot/models/Antenna.dae"/>
           </geometry>
         </visual>
         <collision>
@@ -264,9 +239,45 @@
       <parent link="${link_prefix}base_link"/>
       <child link="${link_prefix}imu_frame"/>
     </joint> -->
+    
+
+    <!-- wheel ODE properties -->
+    <!-- <gazebo reference="${link_prefix}wheel_FL_link">
+      <kp>1e6</kp>
+      <kd>100.0</kd>
+      <mu1>3.0</mu1>
+      <mu2>1.0</mu2>
+      <fdir1>1 0 0</fdir1>
+      <minDepth>0.003</minDepth>
+    </gazebo>
+
+    <gazebo reference="${link_prefix}wheel_FR_link">
+      <kp>1e6</kp>
+      <kd>100.0</kd>
+      <mu1>3.0</mu1>
+      <mu2>1.0</mu2>
+      <fdir1>1 0 0</fdir1>
+      <minDepth>0.003</minDepth>
+    </gazebo>
+
+    <gazebo reference="${link_prefix}wheel_RL_link">
+      <kp>1e6</kp>
+      <kd>100.0</kd>
+      <mu1>3.0</mu1>
+      <mu2>1.0</mu2>
+      <fdir1>1 0 0</fdir1>
+      <minDepth>0.003</minDepth>
+    </gazebo>
+
+    <gazebo reference="${link_prefix}wheel_RR_link">
+      <kp>1e6</kp>
+      <kd>100.0</kd>
+      <mu1>3.0</mu1>
+      <mu2>1.0</mu2>
+      <fdir1>1 0 0</fdir1>
+      <minDepth>0.003</minDepth>
+    </gazebo> -->
+
 
   </xacro:macro>
-
-
-
 </robot>
