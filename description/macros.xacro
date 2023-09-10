@@ -24,14 +24,22 @@
         </inertial>
         <visual>
           <geometry>
-            <mesh filename="file://$(find my_bot)/models/Rocker.dae"/>
-            <mesh filename="package://my_bot/models/Rocker.dae"/>
+            <xacro:if value="$(arg sim_mode)">
+              <mesh filename="file://$(find my_bot)/models/Rocker.dae"/>
+            </xacro:if>
+            <xacro:unless value="$(arg sim_mode)">
+              <mesh filename="package://my_bot/models/Rocker.dae"/>
+            </xacro:unless>
           </geometry>
         </visual>
         <collision>
           <geometry>
-            <mesh filename="file://$(find my_bot)/models/Rocker_outline.stl"/>
-            <mesh filename="package://my_bot/models/Rocker_outline.stl"/>
+            <xacro:if value="$(arg sim_mode)">
+              <mesh filename="file://$(find my_bot)/models/Rocker_outline.stl"/>
+            </xacro:if>
+            <xacro:unless value="$(arg sim_mode)">
+              <mesh filename="package://my_bot/models/Rocker_outline.stl"/>
+            </xacro:unless>
           </geometry>
         </collision>
       </link>
@@ -49,8 +57,12 @@
         </inertial>
         <visual>
           <geometry>
-            <mesh filename="file://$(find my_bot)/models/Wheel${model}.dae"/>
-            <mesh filename="package://my_bot/models/Wheel${model}.dae"/>
+            <xacro:if value="$(arg sim_mode)">
+              <mesh filename="file://$(find my_bot)/models/Wheel${model}.dae"/>
+            </xacro:if>
+            <xacro:unless value="$(arg sim_mode)">
+              <mesh filename="package://my_bot/models/Wheel${model}.dae"/>
+            </xacro:unless>
           </geometry>
         </visual>
         <collision>
@@ -61,8 +73,12 @@
         </collision>
         <collision>
           <geometry>
-            <mesh filename="file://$(find my_bot)/models/Wheel_outline.stl"/>
-            <mesh filename="package://my_bot/models/Wheel_outline.stl"/>
+            <xacro:if value="$(arg sim_mode)">
+              <mesh filename="file://$(find my_bot)/models/Wheel_outline.stl"/>
+            </xacro:if>
+            <xacro:unless value="$(arg sim_mode)">
+              <mesh filename="package://my_bot/models/Wheel_outline.stl"/>
+            </xacro:unless>
           </geometry>
         </collision>
       </link>
@@ -94,14 +110,22 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="file://$(find my_bot)/models/Chassis.dae"/>
-          <mesh filename="package://my_bot/models/Chassis.dae"/>
+          <xacro:if value="$(arg sim_mode)">
+            <mesh filename="file://$(find my_bot)/models/Chassis.dae"/>
+          </xacro:if>
+          <xacro:unless value="$(arg sim_mode)">
+            <mesh filename="package://my_bot/models/Chassis.dae"/>
+          </xacro:unless>
         </geometry>
       </visual>
       <collision>
         <geometry>
-          <mesh filename="file://$(find my_bot)/models/Chassis_outline.stl"/>
-          <mesh filename="package://my_bot/models/Chassis_outline.stl"/>
+          <xacro:if value="$(arg sim_mode)">
+            <mesh filename="file://$(find my_bot)/models/Chassis_outline.stl"/>
+          </xacro:if>
+          <xacro:unless value="$(arg sim_mode)">
+            <mesh filename="package://my_bot/models/Chassis_outline.stl"/>
+          </xacro:unless>
         </geometry>
       </collision>
     </link>
@@ -123,10 +147,14 @@
             iyy="2.5529e-7" iyz="0.0"
             izz="1.354e-8"/>
         </inertial>
-        <visual>
+        <visual>          
           <geometry>
-            <mesh filename="file://$(find my_bot)/models/Antenna.dae"/>
-            <mesh filename="package://my_bot/models/Antenna.dae"/>
+            <xacro:if value="$(arg sim_mode)">
+              <mesh filename="file://$(find my_bot)/models/Antenna.dae"/>
+            </xacro:if>
+            <xacro:unless value="$(arg sim_mode)">
+              <mesh filename="package://my_bot/models/Antenna.dae"/>
+            </xacro:unless>
           </geometry>
         </visual>
         <collision>
