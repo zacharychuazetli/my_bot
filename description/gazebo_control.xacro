@@ -15,8 +15,8 @@
             <left_joint>wheel_RL_joint</left_joint>
             <right_joint>wheel_RR_joint</right_joint>
 
-            <wheel_separation>0.358</wheel_separation>
-            <wheel_separation>0.358</wheel_separation>
+            <wheel_separation>0.33</wheel_separation>
+            <wheel_separation>0.33</wheel_separation>
             
             <!-- dont know if its 0.057 or 0.0625 radius here took 0.057 -->
             <wheel_diameter>0.125</wheel_diameter>
