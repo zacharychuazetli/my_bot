@@ -11,7 +11,7 @@ def generate_launch_description():
             executable='rplidar_composition',
             output='screen',
             parameters=[{
-                'serial_port': '/dev/serial/by-path/platform-70090000.xusb-usb-0:2.4:1.0-port0',
+                'serial_port': '/dev/ttyUSB1',
                 'frame_id': 'laser_frame',
                 'angle_compensate': True,
                 'scan_mode': 'Standard'

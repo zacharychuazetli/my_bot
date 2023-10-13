@@ -174,7 +174,7 @@
 
     <xacro:if value="${footprint_link}">
       <joint name="${joint_prefix}base_joint" type="fixed">
-        <origin xyz="0 0 0.19783" rpy="0 0 0"/>
+        <origin xyz="0.15 0 0.19783" rpy="0 0 0"/>
         <parent link="${link_prefix}base_footprint"/>
         <child link="${link_prefix}base_link"/>
       </joint>
@@ -250,25 +250,13 @@
       </joint>
     </xacro:if>
 
-    <!-- <joint name="${joint_prefix}camera_joint" type="fixed">
-      <origin xyz="0.0971 0 -0.0427" rpy="0 0.2094 0"/>
-      <parent link="${link_prefix}base_link"/>
-      <child link="${link_prefix}camera_frame"/>
-    </joint>
-
-    <joint name="${joint_prefix}camera_optical_joint" type="fixed">
-      <origin xyz="0 0 0" rpy="-${pi/2} 0.0 -${pi/2}"/>
-      <parent link="${link_prefix}camera_frame"/>
-      <child link="${link_prefix}camera_optical_frame"/>
-    </joint>
-
-    <joint name="${joint_prefix}imu_joint" type="fixed">
+    <!-- <joint name="${joint_prefix}imu_joint" type="fixed">
       <origin xyz="${imu_translation}" rpy="0 0 0"/>
       <parent link="${link_prefix}base_link"/>
       <child link="${link_prefix}imu_frame"/>
-    </joint> -->
-    
+    </joint>  -->
 
+   
     <!-- wheel ODE properties -->
     <!-- <gazebo reference="${link_prefix}wheel_FL_link">
       <kp>1e6</kp>
